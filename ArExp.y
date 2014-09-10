@@ -13,17 +13,17 @@
 %token <float> NUM
 %token <t> MAS MENOS POR ENTRE
 
-%type <val> exp goal
-%type <t> op
-
+%type <val> exp goal term fact
 %%
 goal:	exp		{$$=$1;};
-exp:	exp op exp	{$$=fun($1, $2, $3);}
-	|NUM		{$$=$1;};
-op:	MAS		{$$=$1;}
-	|MENOS		{$$=$1;}
-	|POR		{$$=$1;}
-	|ENTRE		{$$=$1;};
+exp:	term MAS exp	{$$=$1 + $3;}
+	|term MENOS exp	{$$=$1 - $3;}
+	|term		{$$=$1;};
+term:	fact POR term	{$$=$1 * $3;}
+	|fact ENTRE term{$$=$1 / $3;}
+	|fact		{$$=$1;};
+fact:	NUM		{$$=$1;};
+
 %%
 
 int main() {
@@ -32,26 +32,6 @@ int main() {
 	return 0;
 }
 
-float fun(float a, char op, float b){
-	float f;
-	switch(op){
-		case '+': f=a+b;
-			printf("%f\n",f);
-			break;
-		case '-': f=a+b;
-			printf("%f\n",f);
-			break;
-		case '*': f=a+b;
-			printf("%f\n",f);
-			break;
-		case '/': f=a+b;
-			printf("%f\n",f);
-			break;
-		default: printf("Error!!"); 
-			f=-1;
-		}
-		return f;
-}
 
 
 
