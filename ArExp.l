@@ -15,14 +15,14 @@ MAS	"+"
 MENOS	"-"
 ENTRE	"/"
 POR	"*"
-NUM	[0-9]+[0-9]*
+NUM	[0-9]*
 
 %%
 {MAS}	{yylval.t; return MAS;}
 {MENOS}	{yylval.t; return MENOS;}
 {POR}	{yylval.t; return POR;}
 {ENTRE}	{yylval.t; return ENTRE;}
-{NUM}	{yylval.val; return NUM;}
+{NUM}	{yylval.val = atoi(yytext); return NUM;}
 "salir" yyterminate();
 %%
 

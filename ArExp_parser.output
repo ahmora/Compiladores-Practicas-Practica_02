@@ -1,0 +1,174 @@
+Grammar
+
+    0 $accept: goal $end
+
+    1 goal: exp
+
+    2 exp: term MAS exp
+    3    | term MENOS exp
+    4    | term
+
+    5 term: fact POR term
+    6     | fact ENTRE term
+    7     | fact
+
+    8 fact: NUM
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+NUM (258) 8
+MAS (259) 2
+MENOS (260) 3
+POR (261) 5
+ENTRE (262) 6
+
+
+Nonterminals, with rules where they appear
+
+$accept (8)
+    on left: 0
+goal (9)
+    on left: 1, on right: 0
+exp (10)
+    on left: 2 3 4, on right: 1 2 3
+term (11)
+    on left: 5 6 7, on right: 2 3 4 5 6
+fact (12)
+    on left: 8, on right: 5 6 7
+
+
+State 0
+
+    0 $accept: . goal $end
+
+    NUM  shift, and go to state 1
+
+    goal  go to state 2
+    exp   go to state 3
+    term  go to state 4
+    fact  go to state 5
+
+
+State 1
+
+    8 fact: NUM .
+
+    $default  reduce using rule 8 (fact)
+
+
+State 2
+
+    0 $accept: goal . $end
+
+    $end  shift, and go to state 6
+
+
+State 3
+
+    1 goal: exp .
+
+    $default  reduce using rule 1 (goal)
+
+
+State 4
+
+    2 exp: term . MAS exp
+    3    | term . MENOS exp
+    4    | term .
+
+    MAS    shift, and go to state 7
+    MENOS  shift, and go to state 8
+
+    $default  reduce using rule 4 (exp)
+
+
+State 5
+
+    5 term: fact . POR term
+    6     | fact . ENTRE term
+    7     | fact .
+
+    POR    shift, and go to state 9
+    ENTRE  shift, and go to state 10
+
+    $default  reduce using rule 7 (term)
+
+
+State 6
+
+    0 $accept: goal $end .
+
+    $default  accept
+
+
+State 7
+
+    2 exp: term MAS . exp
+
+    NUM  shift, and go to state 1
+
+    exp   go to state 11
+    term  go to state 4
+    fact  go to state 5
+
+
+State 8
+
+    3 exp: term MENOS . exp
+
+    NUM  shift, and go to state 1
+
+    exp   go to state 12
+    term  go to state 4
+    fact  go to state 5
+
+
+State 9
+
+    5 term: fact POR . term
+
+    NUM  shift, and go to state 1
+
+    term  go to state 13
+    fact  go to state 5
+
+
+State 10
+
+    6 term: fact ENTRE . term
+
+    NUM  shift, and go to state 1
+
+    term  go to state 14
+    fact  go to state 5
+
+
+State 11
+
+    2 exp: term MAS exp .
+
+    $default  reduce using rule 2 (exp)
+
+
+State 12
+
+    3 exp: term MENOS exp .
+
+    $default  reduce using rule 3 (exp)
+
+
+State 13
+
+    5 term: fact POR term .
+
+    $default  reduce using rule 5 (term)
+
+
+State 14
+
+    6 term: fact ENTRE term .
+
+    $default  reduce using rule 6 (term)
