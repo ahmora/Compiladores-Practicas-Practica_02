@@ -26,11 +26,5 @@ NUM	[0-9]+[0-9]*
 "salir" yyterminate();
 %%
 
-int main(int argc, char *argv[])
-{
-	printf(">> ");
-	yylex();
-	return 0;
-}
 
 
