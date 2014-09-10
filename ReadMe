@@ -10,4 +10,7 @@ Hernández Mora Alejandro	308551392	alejandrohmora@ciencias.unam.mx
 Ejecución:
 El programa se puede ejecutar poniendo en la terminal dentro de la carpeta src los comandos:
 make compile run
-para salir basta con escribir "salir" durante la ejecución del programa.
+
+Para salir basta con escribir "salir" durante la ejecución del programa.
+Para limpiar la carpeta de los archivos ejecutables generados se puede ejecutar el comando
+make clean
