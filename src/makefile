@@ -1,4 +1,5 @@
 compile:
+	flex ArExp.l
 	bison -dv ArExp.y -o ArExp_parser.c
 	flex ArExp.l
 	gcc ArExp_scanner.c ArExp_parser.c -o practica2

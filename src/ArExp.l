@@ -16,14 +16,17 @@ MENOS	"-"
 ENTRE	"/"
 POR	"*"
 NUM	[0-9]*
+ENTER	"\n"
+SALIDA	"salir"
 
 %%
-{MAS}	{yylval.t; return MAS;}
-{MENOS}	{yylval.t; return MENOS;}
-{POR}	{yylval.t; return POR;}
-{ENTRE}	{yylval.t; return ENTRE;}
-{NUM}	{yylval.val = atoi(yytext); return NUM;}
-"salir"	yyterminate();
+{MAS}		{return MAS;}
+{MENOS}		{return MENOS;}
+{POR}		{return POR;}
+{ENTRE}		{return ENTRE;}
+{NUM}		{yylval.val = atoi(yytext); return NUM;}
+{ENTER}     	{return ENTER;}
+{SALIDA}	{return SALIDA;}
 %%
 
 
