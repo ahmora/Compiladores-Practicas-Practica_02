@@ -7,7 +7,7 @@ int yyerror(const char *s) { printf ("Error: %s\n", s); }
 
 %union Data {
 	float val;
-	char t;
+	//char t;
 }
 
 %token <val> NUM
@@ -18,13 +18,13 @@ int yyerror(const char *s) { printf ("Error: %s\n", s); }
 %%
 
 goal:	exp					{$$=$1;};
-exp:	term MAS exp		{$$=$1 + $3;}
+exp:	term MAS exp		{$$=$1 + $3;printf("val: %f\n", $$)}
 		|term MENOS exp		{$$=$1 - $3;}
 		|term				{$$=$1;};
 term:	fact POR term		{$$=$1 * $3;}
 		|fact ENTRE term	{$$=$1 / $3;}
 		|fact				{$$=$1;};
-fact:	NUM					{$$=$1;};
+fact:	NUM					{$$=$1;printf("val: %f\n", $$)};
 
 %%
 
