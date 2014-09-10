@@ -1,7 +1,7 @@
 all:
-	bison -d ArExp.y
+	bison -d ArExp.y -o ArExp_parser.c
 	flex ArExp.l
-	gcc practica2.c -o practica2
+	gcc ArExp_scanner.c ArExp_parser.c -o practica2
 
 clean: 
-	rm ArExp.tab.c ArExp.tab.h practica2.c practica2
+	rm ArExp_parser.c ArExp_parser.h ArExp_scanner.c practica2.c

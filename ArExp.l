@@ -1,12 +1,12 @@
 %{
 #include <stdio.h>
 #include <stdlib.h>
-#include "ArExp.tab.h"
+#include "ArExp_parser.h"
 
 %}
 
 %option noyywrap
-%option outfile="practica2.c"
+%option outfile="ArExp_scanner.c"
 
 
 
@@ -23,11 +23,14 @@ NUM	[0-9]+[0-9]*
 {POR}	{yylval.t; return POR;}
 {ENTRE}	{yylval.t; return ENTRE;}
 {NUM}	{yylval.val; return NUM;}
+"salir" yyterminate();
 %%
 
 int main(int argc, char *argv[])
 {
-    yylex();
+	printf(">> ");
+	yylex();
+	return 0;
 }
 
 

@@ -1,7 +1,8 @@
 %{
 #include <stdio.h>
 #include <stdlib.h>
-
+int yylex(); 
+int yyerror(const char *s) { printf ("Error: %s\n", s); }
 %}
 
 %union Data {
