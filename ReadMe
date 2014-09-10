@@ -6,3 +6,8 @@ Equipo: Paar
 Integrantes:
 García García Alan Mauricio 	308639870	mauriciogarciag@ciencias.unam.mx
 Hernández Mora Alejandro	308551392	alejandrohmora@ciencias.unam.mx
+
+Ejecución:
+El programa se puede ejecutar poniendo en la terminal dentro de la carpeta src los comandos:
+make compile run
+para salir basta con escribir "salir" durante la ejecución del programa.
