@@ -13,13 +13,15 @@ MENOS	"-"
 ENTRE	"/"
 POR		"*"
 NUM		[0-9]+
+ENTER	"\n"
 
 %%
 
-{MAS}	{return MAS;}
-{MENOS}	{return MENOS;}
-{POR}	{return POR;}
-{ENTRE}	{return ENTRE;}
-{NUM}	{yylval.val = atoi(yytext); return NUM;}
+{MAS}		{return MAS;}
+{MENOS}		{return MENOS;}
+{POR}		{return POR;}
+{ENTRE}		{return ENTRE;}
+{NUM}		{yylval.val = atoi(yytext); return NUM;}
+{ENTER}     {return ENTER;}
 
 %%

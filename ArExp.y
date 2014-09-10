@@ -10,12 +10,14 @@ int yyerror(const char *s) { printf ("Error: %s\n", s); }
 }
 
 %token <val> NUM
-%token MAS MENOS POR ENTRE
+%token MAS MENOS POR ENTRE ENTER
 
 %type <val> exp goal term fact
 
 %%
 
+input:	goal ENTER
+		;
 goal:	exp					{$$=$1; printf("%f\n", $$); return 0}
 		;
 exp:	term MAS exp		{$$=$1 + $3;}
