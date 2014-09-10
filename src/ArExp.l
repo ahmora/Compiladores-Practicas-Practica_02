@@ -23,7 +23,7 @@ NUM	[0-9]*
 {POR}	{yylval.t; return POR;}
 {ENTRE}	{yylval.t; return ENTRE;}
 {NUM}	{yylval.val = atoi(yytext); return NUM;}
-"salir" yyterminate();
+"salir"	yyterminate();
 %%
 
 
