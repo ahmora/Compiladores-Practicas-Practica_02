@@ -18,7 +18,7 @@
 
 %%
 goal:	exp		{$$=$1;};
-exp:	exp op exp	{$$=f($1, $2, $3); printf($$);}
+exp:	exp op exp	{$$=fun($1, $2, $3);}
 	|NUM		{$$=$1;};
 op:	MAS		{$$=$1;}
 	|MENOS		{$$=$1;}
@@ -32,14 +32,25 @@ int main() {
 	return 0;
 }
 
-float f(float a, char op, float b){
+float fun(float a, char op, float b){
+	float f;
 	switch(op){
-		case '+': return a+b; break;
-		case '-': return a-b; break;
-		case '*': return a*b; break;
-		case '/': return a/b; break;
-		default: printf("Error!!"); return 0;
+		case '+': f=a+b;
+			printf("%f\n",f);
+			break;
+		case '-': f=a+b;
+			printf("%f\n",f);
+			break;
+		case '*': f=a+b;
+			printf("%f\n",f);
+			break;
+		case '/': f=a+b;
+			printf("%f\n",f);
+			break;
+		default: printf("Error!!"); 
+			f=-1;
 		}
+		return f;
 }
 
 
